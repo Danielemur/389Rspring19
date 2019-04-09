@@ -70,23 +70,19 @@ Alternatively, they could implement an IP whitelist or blacklist, either only pe
 
 #### 2.
 
-##### 1.
-
-##### 2.
-
 The file `greetz.fpff` was authored by `fl1nch`.
 
-##### 3.
+#### 3.
 
 * Section 1:
   * Type: SECTION_ASCII
-  * Data: 
+  * Data: 'Hey you, keep looking :)'
 * Section 2:
   * Type: SECTION_COORD
   * Data: (52.336035, 4.880673)
 * Section 3:
   * Type: SECTION_PNG
-  * Data: 'Hey you, keep looking :)'
+  * Data: ![image.png](image.png)
 * Section 4:
   * Type: SECTION_ASCII
   * Data: '}R983CSMC_perg_tndid_u0y_yllufep0h{-R983CSMC'
@@ -94,8 +90,8 @@ The file `greetz.fpff` was authored by `fl1nch`.
   * Type: SECTION_ASCII
   * Data: 'Q01TQzM4OVIte2hleV9oM3lfeTBVX3lvdV9JX2RvbnRfbGlrZV95b3VyX2Jhc2U2NF9lbmNvZGluZ30='
 
-##### 4.
+#### 4.
 
-##### 5.
+#### 5.
 
 
