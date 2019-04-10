@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import struct
+from datetime import datetime
+import tempfile
 
 # Constants
 MAGIC = 0x8BADF00D
@@ -180,22 +183,49 @@ class FPFF:
             self.sections[i] = FPFF_Section(data[offset:], self.section_count)
             offset += self.sections[i].size()
 
-# if len(sys.argv) < 2:
-#     sys.exit("Usage: python3 fpff.py input_file.fpff")
+def write_image(suffix, data):
+    with tempfile.NamedTemporaryFile(suffix=suffix,
+                                     prefix='image_',
+                                     dir=os.getcwd(),
+                                     delete=False) as tmpfile:
+        tmpfile.file.write(data)
+        return tmpfile.name
 
-# # Open file to parse
-# with open(sys.argv[1], 'rb') as file:
-#     data = file.read()
+if len(sys.argv) < 2:
+    sys.exit("Usage: python3 fpff.py input_file.fpff")
 
-# fpff = FPFF(data)
+# Open file to parse
+with open(sys.argv[1], 'rb') as file:
+    data = file.read()
 
-# print("------- HEADER -------")
-# print("MAGIC: %s" % hex(fpff.header.magic))
-# print("VERSION: %d" % int(fpff.header.version))
-# print("TIMESTAMP: %d" % int(version))
-# print("AUTHOR: %s" % fpff.header.author)
-# print("SECTION COUNT: %d" % int(fpff.header.section_count))
+data = FPFF(data)
 
-# print("-------  BODY  -------")
-# #for section in fpff.sections:
+print("------- HEADER -------")
+print("MAGIC: %s" % hex(data.magic))
+print("VERSION: %d" % int(data.version))
+utc_time = datetime.utcfromtimestamp(data.timestamp)
+print("TIMESTAMP: %s" % utc_time.strftime("%b. %d, %Y %H:%M:%S.%f+00:00 (UTC)"))
+print("AUTHOR: %s" % data.author)
+print("SECTION COUNT: %d" % int(data.section_count))
 
+print("")
+print("-------  BODY  -------")
+for i, section in enumerate(data.sections):
+    print("Section %d:" % int(i + 1))
+    print("Type: %s" % section.type_str())
+    print("Data: ", end="")
+    if (section.stype == FPFF_Section.SECTION_ASCII or
+        section.stype == FPFF_Section.SECTION_UTF8):
+        print("'%s'" % section.svalue)
+    elif section.stype == FPFF_Section.SECTION_PNG:
+        filename = write_image('.png', section.svalue)
+        print("Image written to %s" % filename)
+    elif section.stype == FPFF_Section.SECTION_GIF87:
+        filename = write_image('.gif', section.svalue)
+        print("Image written to %s" % filename)
+    elif section.stype == FPFF_Section.SECTION_GIF89:
+        filename = write_image('.gif', section.svalue)
+        print("Image written to %s" % filename)
+    else:
+        print(section.svalue)
+    print("")

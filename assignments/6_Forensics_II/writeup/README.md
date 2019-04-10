@@ -66,7 +66,23 @@ Alternatively, they could implement an IP whitelist or blacklist, either only pe
 
 ### Part 2 (55 Pts)
 
+The implementation of the parser was fairly straightforward, if time-consuming.
+For the purpose of keeping the data organized both while being parsed and when being used, I designed two classes in python, the FPFF class, which corresponds to a single FPFF file, and the FPFF_Section class, which corresponds to a single section within an FPFF object.
+The FPFF object stores the header information as well as a list containing all of the sections.
+Each FPFF_Section stored the section type, length, and contents.
+The contents vary depending on the section type.
+
+The __init__ methods of FPFF and FPFF_Section each handle the parsing of the binary data.
+As the data is parsed, it is checked to ensure that it is valid.
+Otherwise, the parser exits with an error.
+
+When printing readable output after the parsing stage, most sections are printed using python's default behavior for converting to a string.
+Ascii and utf-8 sections are additionally wrapped with quotes.
+The three image formats are instead saved to a file, with the corresponsind filename printed as output.
+
 #### 1.
+
+The file `greetz.fpff` was created on Mar. 27, 2019 at 04:15:05.000000+00:00 (UTC).
 
 #### 2.
 
@@ -82,7 +98,8 @@ The file `greetz.fpff` was authored by `fl1nch`.
   * Data: (52.336035, 4.880673)
 * Section 3:
   * Type: SECTION_PNG
-  * Data: ![image.png](image.png)
+  * Data:
+  ![image.png](image.png)
 * Section 4:
   * Type: SECTION_ASCII
   * Data: '}R983CSMC_perg_tndid_u0y_yllufep0h{-R983CSMC'
@@ -92,6 +109,6 @@ The file `greetz.fpff` was authored by `fl1nch`.
 
 #### 4.
 
-#### 5.
+A flag located in section 4 is either `}R983CSMC_perg_tndid_u0y_yllufep0h{-R983CSMC` or `CMSC389R-{h0pefully_y0u_didnt_grep_CMSC389R}`, depending on whether it's read forward or backward.
 
-
+Section 3 also contains a flag, `CMSC389R-{w3lc0me_b@ck_fr0m_spr1ng_br3ak}`.
