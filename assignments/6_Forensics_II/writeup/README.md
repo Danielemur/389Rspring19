@@ -67,12 +67,12 @@ Alternatively, they could implement an IP whitelist or blacklist, either only pe
 ### Part 2 (55 Pts)
 
 The implementation of the parser was fairly straightforward, if time-consuming.
-For the purpose of keeping the data organized both while being parsed and when being used, I designed two classes in python, the FPFF class, which corresponds to a single FPFF file, and the FPFF_Section class, which corresponds to a single section within an FPFF object.
-The FPFF object stores the header information as well as a list containing all of the sections.
-Each FPFF_Section stored the section type, length, and contents.
+For the purpose of keeping the data organized both while being parsed and when being used, I designed two classes in python, the `FPFF` class, which corresponds to a single FPFF file, and the `FPFF_Section` class, which corresponds to a single section within an `FPFF` object.
+The `FPFF` object stores the header information as well as a list containing all of the sections.
+Each `FPFF_Section` stored the section type, length, and contents.
 The contents vary depending on the section type.
 
-The __init__ methods of FPFF and FPFF_Section each handle the parsing of the binary data.
+The `__init__` methods of FPFF and FPFF_Section each handle the parsing of the binary data.
 As the data is parsed, it is checked to ensure that it is valid.
 Otherwise, the parser exits with an error.
 
