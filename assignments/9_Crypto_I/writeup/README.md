@@ -1,12 +1,12 @@
 # Crypto I Writeup
 
-Name: *PUT YOUR NAME HERE*
-Section: *PUT YOUR SECTION NUMBER HERE*
+Name: Daniel Kelly
+Section: 0101
 
 I pledge on my honor that I have not given or received any unauthorized
 assistance on this assignment or examination.
 
-Digital acknowledgement: *PUT YOUR NAME HERE*
+Digital acknowledgement: Daniel Kelly
 
 ## Assignment Writeup
 
@@ -14,4 +14,4 @@ Digital acknowledgement: *PUT YOUR NAME HERE*
 
 ### Part 2 (30 Pts)
 
-*Your reflection goes here*
+The flag for this assignment is CMSC389R-{h@sh1ng_@nd_sl@sh1ng}.
