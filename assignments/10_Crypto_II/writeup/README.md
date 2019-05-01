@@ -52,11 +52,11 @@ The file [signature.txt.asc](signature.txt.asc) contains the signed file, which 
 Encrypting the image with AES-128 encryption in ECB mode produces the following image:
 ![ecb.bmp](ecb.bmp)
 
-Encrypting the image with AES-128 encryption in CCB mode produces the following image:
+Encrypting the image with AES-128 encryption in CBC mode produces the following image:
 ![cbc.bmp](cbc.bmp)
 
-The image that results from encryption in ECB mode appears completely random, with no discernable structure.
-In contrast, the 3 different regions of the original image (circle, square, and background) are still discernable in the image resulting from encryption in CBC mode.
+The 3 different regions of the original image (circle, square, and background) are still discernable in the image resulting from encryption in ECB mode.
+In contrast, the image that results from encryption in CBC mode appears completely random, with no discernable structure.
 
 These differences are due the distinct methods used by each mode for encryption.
 ECB mode is the simpler of the two.
