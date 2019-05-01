@@ -44,7 +44,7 @@ This reveals the following message:
 The command `gpg --list-secret-keys` prints the following, showing the key that has been imported:
 ![screenshot.png](screenshot.png)
 
-The file [signature.txt.asc](signature.txt.asc) contained the signed file generated as instructed.
+The file [signature.txt.asc](signature.txt.asc) contains the signed file, which was generated as instructed.
 
 
 ### Part 2 (30 Pts)
